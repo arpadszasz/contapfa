@@ -9,7 +9,7 @@ CREATE TABLE metadata (
     release     TIMESTAMP NOT NULL
 );
 
-INSERT INTO metadata (id, version, release) VALUES ("1.0", datetime('now', 'localtime'));
+INSERT INTO metadata (id, version, release) VALUES (1, "1.0", datetime('now', 'localtime'));
 
 COMMIT;
 
