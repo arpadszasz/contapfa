@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxFrame" name="main_frame">
+		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+		<size>500,300</size>
+		<title>ContaPFA</title>
+		<centered>1</centered>
+		<aui_managed>0</aui_managed>
+		<object class="wxMenuBar" name="main_menubar">
+			<label>MyMenuBar</label>
+			<object class="wxMenu" name="main_program">
+				<label>_Program</label>
+				<object class="wxMenuItem" name="main_program_quit">
+					<label>_Iesire</label>
+					<help></help>
+				</object>
+			</object>
+		</object>
+	</object>
+</resource>
