@@ -7,6 +7,8 @@ use utf8;
 use Moose;
 use MooseX::NonMoose;
 use Wx::XRC;
+use Try::Tiny;
+use Plenum::ContaPFA::Model;
 use Plenum::ContaPFA::Wx::Main;
 
 extends 'Wx::App';
@@ -26,6 +28,15 @@ sub OnInit {
 
     $self->cfg($cfg);
 
+    try {
+        $self->model( Plenum::ContaPFA::Model->new( { cfg => $self->cfg } ) );
+    }
+    catch {
+        warn $_;
+        Wx::LogError('Problema baza de date!');
+        return 1;
+    };
+
     $self->xrc( Wx::XmlResource->new );
     $self->xrc->InitAllHandlers;
     $self->xrc->Load( $self->cfg->{xrc_file} )
@@ -34,6 +45,7 @@ sub OnInit {
     my $main_frame = Plenum::ContaPFA::Wx::Main->new(
         {
             cfg   => $self->cfg,
+            model => $self->model,
             xrc   => $self->xrc
         }
     );

@@ -53,6 +53,8 @@ Cava::Packager::SetResourcePath("$RealBin/res");
 
 Wx::Perl::SplashFast->new( Cava::Packager::GetResource('splash.png'), 1000 );
 
+my $db_filename = $RealBin . '/contapfa.db';
+
 my %cfg = (
     program_version => '1.0.0',
     copyright_start => 2014,
@@ -60,6 +62,7 @@ my %cfg = (
     splash_file     => Cava::Packager::GetResource('splash.png'),
     xrc_file        => fix_paths( Cava::Packager::GetResource('layout.xrc') ),
     program_path    => $RealBin,
+    db_filename     => $db_filename,
 );
 
 my $app = Plenum::ContaPFA::Wx->new( { cfg => \%cfg } );
